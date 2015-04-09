@@ -7,6 +7,16 @@
 	<name>Voto Electronico</name>
 	<description>Voto Electronico Presupuesto Participativo</description>
 
+
+	<developers>
+		<developer>
+			<email>ziporock@gmail.com</email>
+			<name>Alles Sergio</name>
+			<url>https://github.com/ziporock/</url>
+			<id>ziporock</id>
+		</developer>
+	</developers>
+	
 	<build>
 		<directory>target</directory>
 		<outputDirectory>target/classes</outputDirectory>
@@ -35,14 +45,14 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			<!-- >plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.7</version>
 				<configuration>
 					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
 				</configuration>
-			</plugin-->
+			</plugin>
 			<!-- plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
