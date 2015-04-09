@@ -10,7 +10,7 @@
 	<build>
 		<directory>target</directory>
 		<outputDirectory>target/classes</outputDirectory>
-		<finalName>${project.artifactId}-${version}</finalName>
+		<finalName>${project.artifactId}-${project.version}</finalName>
 		<testOutputDirectory>target/test-classes</testOutputDirectory>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
@@ -35,15 +35,15 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- >plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
 				<version>2.7</version>
 				<configuration>
 					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
 				</configuration>
-			</plugin>
-			<plugin>
+			</plugin-->
+			<!-- plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.5</version>
@@ -58,7 +58,7 @@
 						<packageBranchRate>85</packageBranchRate>
 					</check>
 				</configuration>
-			</plugin>
+			</plugin-->
 
 		</plugins>
 	</build>
