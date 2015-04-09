@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.junit.Before;
-
 import ungs.edu.ve.modelo.Lista;
 import ungs.edu.ve.modelo.ResultadoVotacion;
 
