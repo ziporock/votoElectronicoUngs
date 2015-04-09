@@ -14,7 +14,7 @@ import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 
-public class ControladorVotacionImpl implements IControladorVotacion {
+public class ControladorVotacionImpl  {
 	private ValidadorVotante validador;
 
 	
@@ -22,7 +22,7 @@ public class ControladorVotacionImpl implements IControladorVotacion {
 		validador=new ValidadorVotante();
 	}
 	
-	@Override
+	
 	public void habilitarVotante(String id) throws Exception {
 		Votante votante=validador.obtenerVotante(id);
 		
@@ -36,19 +36,17 @@ public class ControladorVotacionImpl implements IControladorVotacion {
 
 	}
 
-	@Override
 	public long votarListas(Set<Lista> listas) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
 	public ResultadoVotacion getResultados() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public void inicializar() {
 		
 		
