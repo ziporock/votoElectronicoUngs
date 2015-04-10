@@ -2,17 +2,13 @@ package ungs.edu.ve.controlador;
 
 import ungs.edu.ve.modelo.Votante;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 import ungs.edu.ve.util.CONSTANTE;
 
 public class ValidadorVotante {
 
 	private VotanteDAO votanteDAO;
 	
-	public ValidadorVotante(){
-		votanteDAO=new VotanteDAOImpl();
-	}
-
+	
 	
 	@SuppressWarnings("unchecked")
 	public Votante obtenerVotante(String id) {
@@ -30,4 +26,16 @@ public class ValidadorVotante {
 		
 	}
 
+
+	public VotanteDAO getVotanteDAO() {
+		return votanteDAO;
+	}
+
+
+	public void setVotanteDAO(VotanteDAO votanteDAO) {
+		this.votanteDAO = votanteDAO;
+	}
+
+	
+	
 }

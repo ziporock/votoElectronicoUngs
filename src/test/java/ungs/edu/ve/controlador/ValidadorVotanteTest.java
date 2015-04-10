@@ -3,55 +3,30 @@ package ungs.edu.ve.controlador;
 import org.junit.Before;
 import org.junit.Test;
 
+import ungs.edu.ve.modelo.Votante;
+import ungs.edu.ve.modelo.dao.impl.ValidadorVotanteMock;
+
 public class ValidadorVotanteTest {
 
-	private ValidadorVotante validadorVotante;
-	private ControladorVotacion controladorVotacion;
+	private ValidadorVotanteMock validadorVotante;
 
 	@Before
 	public void preparar() {
-		validadorVotante = new ValidadorVotante();
-		controladorVotacion = new ControladorVotacion();
-		controladorVotacion.inicializar();
-	}
-
-	@Test
-	public void obtenerVotanteValido() throws Exception {
-		controladorVotacion.habilitarVotante("2");
-
-	}
-
-	@Test
-	public void obtenerVotanteInexistente() throws Exception {
-		controladorVotacion.habilitarVotante("2009");
-
-	}
-
-	@Test
-	public void obtenerVotanteDatosInvalidos() throws Exception {
-		controladorVotacion.habilitarVotante("2009");
-
-	}
+		validadorVotante = new ValidadorVotanteMock();
 	
+	}
+
 	@Test
-	public void obtenerVotanteExistente(){
+	public void obtenerVotanteValidoTest() throws Exception {
 		validadorVotante.obtenerVotante("2");
+
 	}
-	
+
 	@Test
-	public void obtenerVotanteNoExistente(){
-		validadorVotante.obtenerVotante("200");
+	public void estadoValidoTest() throws Exception {
+		validadorVotante.estadoValido(new Votante());
+
 	}
-	
-	@Test
-	public void obtenerVotanteConEstadoValido(){
-		validadorVotante.obtenerVotante("2");
-	}
-	
-	
-	@Test
-	public void obtenerVotanteConEstadoInvalido(){
-		validadorVotante.obtenerVotante("1");
-	}
+
 
 }
