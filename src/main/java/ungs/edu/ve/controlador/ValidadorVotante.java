@@ -7,12 +7,9 @@ import ungs.edu.ve.util.CONSTANTE;
 
 public class ValidadorVotante {
 
-	private VotanteDAO votanteDAO;
+	private VotanteDAO votanteDAO=new VotanteDAOImpl();
 	
-	public ValidadorVotante(){
-		votanteDAO=new VotanteDAOImpl();
-	}
-
+	
 	
 	@SuppressWarnings("unchecked")
 	public Votante obtenerVotante(String id) {
@@ -30,4 +27,16 @@ public class ValidadorVotante {
 		
 	}
 
+
+	public VotanteDAO getVotanteDAO() {
+		return votanteDAO;
+	}
+
+
+	public void setVotanteDAO(VotanteDAO votanteDAO) {
+		this.votanteDAO = votanteDAO;
+	}
+
+	
+	
 }

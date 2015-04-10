@@ -24,7 +24,7 @@ public class PresidenteMesa extends JFrame {
 	private JRadioButton radioFianlizado;
 	private JRadioButton radioVotando;
 	private JRadioButton radioLibre;
-	private ControladorVotacion controladorVotacion;
+	private ControladorVotacion controladorVotacion =new ControladorVotacion();
 
 	private static final long serialVersionUID = -3298221097107822223L;
 	private JPanel contentPane;
@@ -50,11 +50,9 @@ public class PresidenteMesa extends JFrame {
 	 * Create the frame.
 	 */
 	public PresidenteMesa() {
-		
-		controladorVotacion=new ControladorVotacion();
-		
+
 		controladorVotacion.inicializar();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 609, 344);
 		contentPane = new JPanel();
@@ -96,17 +94,17 @@ public class PresidenteMesa extends JFrame {
 				System.out.println("generando voto");
 				controladorVotacion.cerrarVoto(documento.getText());
 				button.setEnabled(false);
-				
+
 			}
 		});
 		button.setBounds(228, 104, 86, 23);
 		panel.add(button);
-		
+
 		documento = new JTextField();
 		documento.setBounds(29, 194, 245, 60);
 		contentPane.add(documento);
 		documento.setColumns(10);
-		
+
 		JButton btnHabilitar = new JButton("Habilitar");
 		btnHabilitar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -115,9 +113,10 @@ public class PresidenteMesa extends JFrame {
 					radioLibre.setSelected(false);
 					radioFianlizado.setSelected(true);
 					button.setEnabled(true);
-					
+
 				} catch (Exception error) {
-					PantallaError pantallaError=new PantallaError(error.getMessage());
+					PantallaError pantallaError = new PantallaError(error
+							.getMessage());
 					pantallaError.setVisible(true);
 				}
 			}

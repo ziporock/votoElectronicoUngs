@@ -3,62 +3,67 @@ package ungs.edu.ve.controlador;
 import org.junit.Before;
 import org.junit.Test;
 
+import ungs.edu.ve.modelo.dao.impl.EntidadDAOImplMock;
+import ungs.edu.ve.modelo.dao.impl.EstadoDAOImplMock;
+import ungs.edu.ve.modelo.dao.impl.ValidadorVotanteMock;
+import ungs.edu.ve.modelo.dao.impl.VotanteDAOImplMock;
+
 public class ControladorVotacionTest {
 	private ControladorVotacion controladorVotacion;
-
+	private ValidadorVotanteMock validadorVotanteMock =new ValidadorVotanteMock();
+	private VotanteDAOImplMock votanteDaoMock= new VotanteDAOImplMock();
+	private EstadoDAOImplMock estadoDAOImplMock=new EstadoDAOImplMock();
+	private EntidadDAOImplMock claustroMock =new EntidadDAOImplMock();
 	
 	@Before
 	public void preparar() {
 		controladorVotacion = new ControladorVotacion();
-		controladorVotacion.inicializar();
+		validadorVotanteMock.setVotanteDAO(votanteDaoMock);
+		controladorVotacion.setEstadoDAO(estadoDAOImplMock);
+		controladorVotacion.setValidador(validadorVotanteMock);
+		controladorVotacion.setClaustroDao(claustroMock);
+		controladorVotacion.setVotanteDAO(votanteDaoMock);
+		
 	}
 
 	@Test
 	public void habilitarVotanteValido() throws Exception {
-		controladorVotacion.habilitarVotante("2");
+		controladorVotacion.habilitarVotante("1");
 
 	}
 	
-	@Test
+	@Test(expected = Exception.class)
 	public void habilitarVotanteYaFinalizado() throws Exception{
-		controladorVotacion.habilitarVotante("1");
+		controladorVotacion.habilitarVotante("2");
 		
 	}
 	
-	@Test
+	@Test(expected = Exception.class)
 	public void habilitarVotanteInexistente() throws Exception{
-		controladorVotacion.habilitarVotante("9012");
+		controladorVotacion.habilitarVotante(null);
 		
 	}
 	
-	@Test
+	@Test(expected = Exception.class)
 	public void habilitarDniInvalido() throws Exception{
 		controladorVotacion.habilitarVotante("rewa1");
 		
 	}
 	
 	@Test
-	public void cerrarVotoValido() throws Exception{
-		controladorVotacion.cerrarVoto("2");
-	}
-	
-	@Test
-	public void cerrarVotoDniInexistente() throws Exception{
-		controladorVotacion.cerrarVoto("20123");
-	}
-	
-	
-	
-	@Test
-	public void habilitarVotanteConDatosInvalidos() throws Exception{
-		controladorVotacion.cerrarVoto("asd1");
-	}
-	
-	
-	@Test
-	public void inicializar() throws Exception{
+	public void inicializarTest(){
 		controladorVotacion.inicializar();
 	}
 	
+	
+
+	
+
+	
+	
+	
+
+	
+
 
 }

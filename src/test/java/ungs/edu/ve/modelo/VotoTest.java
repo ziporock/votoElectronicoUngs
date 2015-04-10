@@ -42,6 +42,7 @@ public class VotoTest {
 	public void testNullPointer() {
 
 		Voto votoNull = null;
+		
 		votoNull.getFechaVoto().equals(FECHA);
 
 	}

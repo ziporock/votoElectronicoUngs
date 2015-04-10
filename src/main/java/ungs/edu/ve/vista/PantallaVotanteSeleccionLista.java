@@ -11,10 +11,21 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
+import ungs.edu.ve.controlador.ControladorVotacion;
+
+@SuppressWarnings("serial")
 public class PantallaVotanteSeleccionLista extends JFrame {
 
 	private JPanel contentPane;
 	private static PantallaVotanteSeleccionLista frame;
+	private ControladorVotacion controladorVotacion = new ControladorVotacion();
+
+	private Checkbox checkboxBlanco;
+	private Checkbox checkbox_inpugnado;
+	private Checkbox checkbox_2;
+	private Checkbox checkbox_3;
+	private Checkbox checkbox_4;
+	private Checkbox checkbox_5;
 
 	/**
 	 * Launch the application.
@@ -36,6 +47,7 @@ public class PantallaVotanteSeleccionLista extends JFrame {
 	 * Create the frame.
 	 */
 	public PantallaVotanteSeleccionLista() {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -52,39 +64,94 @@ public class PantallaVotanteSeleccionLista extends JFrame {
 		textPane.setBounds(12, 12, 126, 225);
 		contentPane.add(textPane);
 
-		Checkbox checkbox = new Checkbox("Lista 1");
-		checkbox.setBounds(170, 12, 115, 23);
-		contentPane.add(checkbox);
+		checkboxBlanco = new Checkbox("Voto en Blanco");
+		checkboxBlanco.setBounds(170, 12, 115, 23);
+		contentPane.add(checkboxBlanco);
 
-		Checkbox checkbox_1 = new Checkbox("Lista 2");
-		checkbox_1.setBounds(170, 41, 115, 23);
-		contentPane.add(checkbox_1);
+		checkbox_inpugnado = new Checkbox("Voto Impugnado");
+		checkbox_inpugnado.setBounds(170, 41, 115, 23);
+		contentPane.add(checkbox_inpugnado);
 
-		Checkbox checkbox_2 = new Checkbox("Lista 3");
+		checkbox_2 = new Checkbox("Lista 3");
 		checkbox_2.setBounds(170, 70, 115, 23);
 		contentPane.add(checkbox_2);
 
-		Checkbox checkbox_3 = new Checkbox("Lista 4");
+		checkbox_3 = new Checkbox("Lista 4");
 		checkbox_3.setBounds(170, 99, 115, 23);
 		contentPane.add(checkbox_3);
 
-		Checkbox checkbox_4 = new Checkbox("Lista 5");
+		checkbox_4 = new Checkbox("Lista 5");
 		checkbox_4.setBounds(170, 128, 115, 23);
 		contentPane.add(checkbox_4);
 
-		Checkbox checkbox_5 = new Checkbox("Lista 6");
+		checkbox_5 = new Checkbox("Lista 6");
 		checkbox_5.setBounds(170, 159, 115, 23);
 		contentPane.add(checkbox_5);
 
 		JButton btnVotar = new JButton("Votar");
 		btnVotar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PopupConfirmacionVoto popupConfirmacionVoto = new PopupConfirmacionVoto();
-				popupConfirmacionVoto.setVisible(true);
+
+				if (validarVotoBlancoImpugnado()) {
+
+					if (controladorVotacion.esVotoValido(getCantidadVotacion())) {
+						PopupConfirmacionVoto popupConfirmacionVoto = new PopupConfirmacionVoto();
+						popupConfirmacionVoto.setVisible(true);
+
+					} else {
+						PantallaError pantallaError = new PantallaError(
+								"Cantidad de Lista mayora la permitida");
+						pantallaError.setVisible(true);
+					}
+				}else{
+					PantallaError pantallaError = new PantallaError(
+							"No puede seleccionar voto IMPUGNADO y voto en BLANCO");
+					pantallaError.setVisible(true);
+				}
+
 			}
 		});
 		btnVotar.setBounds(319, 223, 117, 25);
 		contentPane.add(btnVotar);
+	}
+
+	protected boolean validarVotoBlancoImpugnado() {
+		if(checkboxBlanco.getState() && checkbox_inpugnado.getState()){
+			return false;
+		}
+		return true;
+	}
+
+	protected int getCantidadVotacion() {
+
+		int cantidad = 0;
+
+		if (checkboxBlanco.getState()) {
+			cantidad++;
+		}
+
+		if (checkbox_inpugnado.getState()) {
+			cantidad++;
+		}
+
+		if (checkbox_2.getState()) {
+			cantidad++;
+		}
+
+		if (checkbox_3.getState()) {
+			cantidad++;
+		}
+
+		if (checkbox_4.getState()) {
+			cantidad++;
+		}
+
+		if (checkbox_5.getState()) {
+			cantidad++;
+		}
+
+		return cantidad;
+
 	}
 
 	public static void cerrar() {
