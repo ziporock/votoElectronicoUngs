@@ -15,12 +15,12 @@ import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 import ungs.edu.ve.util.CONSTANTE;
 
-public class ControladorVotacionImpl {
+public class ControladorVotacion {
 	private ValidadorVotante validador;
 	private EstadoDAO estadoDAO;
 	private VotanteDAO votanteDAO;
 
-	public ControladorVotacionImpl() {
+	public ControladorVotacion() {
 		validador = new ValidadorVotante();
 		estadoDAO = new EstadoDAOImpl();
 		votanteDAO = new VotanteDAOImpl();
@@ -49,15 +49,15 @@ public class ControladorVotacionImpl {
 
 	}
 
-	public long votarListas(Set<Lista> listas) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public ResultadoVotacion getResultados() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public long votarListas(Set<Lista> listas) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	public ResultadoVotacion getResultados() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	public void inicializar() {
 

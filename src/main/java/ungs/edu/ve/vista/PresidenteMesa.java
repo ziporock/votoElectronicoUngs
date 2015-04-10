@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
-import ungs.edu.ve.controlador.ControladorVotacionImpl;
+import ungs.edu.ve.controlador.ControladorVotacion;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -25,7 +25,7 @@ public class PresidenteMesa extends JFrame {
 	private JRadioButton radioFianlizado;
 	private JRadioButton radioVotando;
 	private JRadioButton radioLibre;
-	private ControladorVotacionImpl controladorVotacion;
+	private ControladorVotacion controladorVotacion;
 
 	private static final long serialVersionUID = -3298221097107822223L;
 	private JPanel contentPane;
@@ -52,7 +52,7 @@ public class PresidenteMesa extends JFrame {
 	 */
 	public PresidenteMesa() {
 		
-		controladorVotacion=new ControladorVotacionImpl();
+		controladorVotacion=new ControladorVotacion();
 		
 		controladorVotacion.inicializar();
 		
