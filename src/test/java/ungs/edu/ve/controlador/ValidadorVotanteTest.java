@@ -32,5 +32,26 @@ public class ValidadorVotanteTest {
 		controladorVotacion.habilitarVotante("2009");
 
 	}
+	
+	@Test
+	public void obtenerVotanteExistente(){
+		validadorVotante.obtenerVotante("2");
+	}
+	
+	@Test
+	public void obtenerVotanteNoExistente(){
+		validadorVotante.obtenerVotante("200");
+	}
+	
+	@Test
+	public void obtenerVotanteConEstadoValido(){
+		validadorVotante.obtenerVotante("2");
+	}
+	
+	
+	@Test
+	public void obtenerVotanteConEstadoInvalido(){
+		validadorVotante.obtenerVotante("1");
+	}
 
 }

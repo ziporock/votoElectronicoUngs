@@ -46,4 +46,19 @@ public class ControladorVotacionTest {
 	public void cerrarVotoDniInexistente() throws Exception{
 		controladorVotacion.cerrarVoto("20123");
 	}
+	
+	
+	
+	@Test
+	public void habilitarVotanteConDatosInvalidos() throws Exception{
+		controladorVotacion.cerrarVoto("asd1");
+	}
+	
+	
+	@Test
+	public void inicializar() throws Exception{
+		controladorVotacion.inicializar();
+	}
+	
+
 }
