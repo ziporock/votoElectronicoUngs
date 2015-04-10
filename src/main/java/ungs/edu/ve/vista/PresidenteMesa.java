@@ -15,8 +15,11 @@ import javax.swing.border.EmptyBorder;
 
 import ungs.edu.ve.controlador.ControladorVotacion;
 import ungs.edu.ve.controlador.ValidadorVotante;
+import ungs.edu.ve.modelo.Claustro;
+import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
+import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 
@@ -63,6 +66,8 @@ public class PresidenteMesa extends JFrame {
 		controladorVotacion.setValidador(validador);
 		VotanteDAO votanteDAO=new VotanteDAOImpl();
 		controladorVotacion.setVotanteDAO(votanteDAO);
+		EntidadDAO<Claustro> claustroDao=new EntidadDAOImpl<Claustro>();
+		controladorVotacion.setClaustroDao(claustroDao);
 		
 		controladorVotacion.inicializar();
 		

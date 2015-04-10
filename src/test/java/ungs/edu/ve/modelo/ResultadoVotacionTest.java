@@ -56,4 +56,10 @@ public class ResultadoVotacionTest {
 		resultadoVotacion.getResultados().equals(new HashMap<Lista, Double>());
 
 	}
+	
+	@Test
+	public void toStringTest(){
+		ResultadoVotacion resultadoVotacion=new ResultadoVotacion();
+		resultadoVotacion.toString();
+	}
 }

@@ -13,6 +13,7 @@ public class ControladorVotacion {
 	private ValidadorVotante validador;
 	private EstadoDAO estadoDAO;
 	private VotanteDAO votanteDAO;
+	private EntidadDAO<Claustro> claustroDao ;
 
 	
 
@@ -56,8 +57,8 @@ public class ControladorVotacion {
 		claustro.setDescripcion("claustro desc");
 		claustro.setNombre("claustro nom");
 
-		EntidadDAO<Claustro> ec = new EntidadDAOImpl<Claustro>();
-		ec.guardar(claustro);
+		
+		claustroDao.guardar(claustro);
 
 		Votante votante = new Votante();
 		votante.setApellido("Gaston");
@@ -136,6 +137,14 @@ public class ControladorVotacion {
 
 	public void setVotanteDAO(VotanteDAO votanteDAO) {
 		this.votanteDAO = votanteDAO;
+	}
+
+	public EntidadDAO<Claustro> getClaustroDao() {
+		return claustroDao;
+	}
+
+	public void setClaustroDao(EntidadDAO<Claustro> claustroDao) {
+		this.claustroDao = claustroDao;
 	}
 
 	
