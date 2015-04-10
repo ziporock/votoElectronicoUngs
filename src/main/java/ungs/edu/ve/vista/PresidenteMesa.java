@@ -17,7 +17,6 @@ import ungs.edu.ve.controlador.ControladorVotacion;
 import ungs.edu.ve.controlador.ValidadorVotante;
 import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImplMock;
 
 public class PresidenteMesa extends JFrame {
 

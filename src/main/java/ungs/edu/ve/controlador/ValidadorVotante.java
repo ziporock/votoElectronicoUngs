@@ -2,8 +2,6 @@ package ungs.edu.ve.controlador;
 
 import ungs.edu.ve.modelo.Votante;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImplMock;
 import ungs.edu.ve.util.CONSTANTE;
 
 public class ValidadorVotante {

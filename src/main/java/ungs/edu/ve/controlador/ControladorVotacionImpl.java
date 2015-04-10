@@ -11,7 +11,6 @@ import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
 import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.EntidadDAOImplMock;
 import ungs.edu.ve.modelo.dao.impl.EstadoDAOImplMock;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImplMock;
 
@@ -49,6 +48,7 @@ public class ControladorVotacionImpl implements IControladorVotacion {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void inicializar() {
 		
@@ -84,6 +84,7 @@ public class ControladorVotacionImpl implements IControladorVotacion {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	private void cargarEstados() {
 
 		Estado estadoInicial=new Estado();

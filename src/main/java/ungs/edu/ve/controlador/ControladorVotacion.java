@@ -7,11 +7,6 @@ import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
 import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.EntidadDAOImplMock;
-import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.EstadoDAOImplMock;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImplMock;
 import ungs.edu.ve.util.CONSTANTE;
 
 public class ControladorVotacion {
@@ -54,6 +49,7 @@ public class ControladorVotacion {
 	// return null;
 	// }
 
+	@SuppressWarnings("unchecked")
 	public void inicializar() {
 
 		Claustro claustro = new Claustro();
@@ -89,6 +85,7 @@ public class ControladorVotacion {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private void cargarEstados() {
 
 		Estado estadoInicial = new Estado();
@@ -109,6 +106,7 @@ public class ControladorVotacion {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void cerrarVoto(String string) {
 		Votante votante = validador.obtenerVotante(string);
 		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));

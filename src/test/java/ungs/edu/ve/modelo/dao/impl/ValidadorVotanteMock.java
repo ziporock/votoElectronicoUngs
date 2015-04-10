@@ -12,7 +12,6 @@ public class ValidadorVotanteMock extends ValidadorVotante{
 	
 	
 	
-	@SuppressWarnings("unchecked")
 	public Votante obtenerVotante(String id) {
 		Votante votante=new Votante();
 		votante = new Votante();

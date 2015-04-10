@@ -9,6 +9,7 @@ import ungs.edu.ve.modelo.dao.impl.ValidadorVotanteMock;
 public class ValidadorVotanteTest {
 
 	private ValidadorVotanteMock validadorVotante;
+	@SuppressWarnings("unused")
 	private ControladorVotacion controladorVotacion;
 
 	@Before
