@@ -27,14 +27,24 @@ public class ControladorVotacionImpl {
 	}
 
 	public void habilitarVotante(String id) throws Exception {
+
+		try {
+			Long.parseLong(id);
+		} catch (Exception e) {
+			throw new Exception(CONSTANTE.ERROR_DNI_INGRESADO_INVALIDO);
+		}
+
 		Votante votante = validador.obtenerVotante(id);
 
 		if (votante != null) {
 			if (validador.estadoValido(votante)) {
 
 			} else {
-				throw new Exception("Esta Persona ya VOTO!");
+				throw new Exception(CONSTANTE.ERROR_PERSONA_YA_VOTO);
 			}
+		} else {
+			throw new Exception(CONSTANTE.ERROR_DNI_INEXISTENTE);
+
 		}
 
 	}
