@@ -13,6 +13,9 @@ import javax.swing.border.EmptyBorder;
 
 import ungs.edu.ve.controlador.ControladorVotacionImpl;
 
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
 public class PresidenteMesa extends JFrame {
 
 	/**
@@ -26,6 +29,7 @@ public class PresidenteMesa extends JFrame {
 
 	private static final long serialVersionUID = -3298221097107822223L;
 	private JPanel contentPane;
+	private JTextField documento;
 
 	/**
 	 * Launch the application.
@@ -91,18 +95,36 @@ public class PresidenteMesa extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.out.println("generando voto");
-				
-				try {
-					controladorVotacion.habilitarVotante("1");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				controladorVotacion.cerrarVoto(documento.getText());
+				button.setEnabled(false);
 				
 			}
 		});
 		button.setBounds(228, 104, 86, 23);
 		panel.add(button);
+		
+		documento = new JTextField();
+		documento.setBounds(29, 194, 245, 60);
+		contentPane.add(documento);
+		documento.setColumns(10);
+		
+		JButton btnHabilitar = new JButton("Habilitar");
+		btnHabilitar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					controladorVotacion.habilitarVotante(documento.getText());
+					radioLibre.setSelected(false);
+					radioFianlizado.setSelected(true);
+					button.setEnabled(true);
+					
+				} catch (Exception error) {
+					PantallaError pantallaError=new PantallaError(error.getMessage());
+					pantallaError.setVisible(true);
+				}
+			}
+		});
+		btnHabilitar.setBounds(436, 254, 117, 25);
+		contentPane.add(btnHabilitar);
 
 	}
 

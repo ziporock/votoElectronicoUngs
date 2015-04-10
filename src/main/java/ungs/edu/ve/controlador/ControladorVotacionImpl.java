@@ -13,21 +13,24 @@ import ungs.edu.ve.modelo.dao.VotanteDAO;
 import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
+import ungs.edu.ve.util.CONSTANTE;
 
-public class ControladorVotacionImpl  {
+public class ControladorVotacionImpl {
 	private ValidadorVotante validador;
+	private EstadoDAO estadoDAO;
+	private VotanteDAO votanteDAO;
 
-	
-	public ControladorVotacionImpl(){
-		validador=new ValidadorVotante();
+	public ControladorVotacionImpl() {
+		validador = new ValidadorVotante();
+		estadoDAO = new EstadoDAOImpl();
+		votanteDAO = new VotanteDAOImpl();
 	}
-	
-	
+
 	public void habilitarVotante(String id) throws Exception {
-		Votante votante=validador.obtenerVotante(id);
-		
-		if (votante!=null) {
-			if (validador.validarVotoPendiente(votante)) {
+		Votante votante = validador.obtenerVotante(id);
+
+		if (votante != null) {
+			if (validador.estadoValido(votante)) {
 
 			} else {
 				throw new Exception("Esta Persona ya VOTO!");
@@ -46,10 +49,8 @@ public class ControladorVotacionImpl  {
 		return null;
 	}
 
-	
 	public void inicializar() {
-		
-		
+
 		Claustro claustro = new Claustro();
 		claustro.setDescripcion("claustro desc");
 		claustro.setNombre("claustro nom");
@@ -58,53 +59,56 @@ public class ControladorVotacionImpl  {
 		ec.guardar(claustro);
 
 		Votante votante = new Votante();
-		votante.setApellido("hoal");
-		votante.setNombre("gaston");
-		votante.setNroDocumento(1231234);
-		
-		
+		votante.setApellido("Gaston");
+		votante.setNombre("Alles");
+		votante.setNroDocumento(1);
+
 		cargarEstados();
-		
-		EstadoDAO estadoDAO=new EstadoDAOImpl();
-		
-		
-		
+
 		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));
 
-		
 		votante.setClaustro(claustro);
 
-		VotanteDAO ev = new VotanteDAOImpl();
+		votanteDAO.guardar(votante);
 
-		ev.guardar(votante);
+		Votante votante1 = new Votante();
+		votante1.setApellido("guido");
+		votante1.setNombre("dorrego");
+		votante1.setNroDocumento(2);
 
-		
+		votante1.setClaustro(claustro);
+
+		votante1.setEstado((Estado) estadoDAO.getById(Estado.class, 1L));
+
+		votanteDAO.guardar(votante1);
+
 	}
 
 	private void cargarEstados() {
 
-		Estado estadoInicial=new Estado();
-		estadoInicial.setCodigo("init");
+		Estado estadoInicial = new Estado();
+		estadoInicial.setCodigo(CONSTANTE.ESTADO_INICIAL);
 		estadoInicial.setDescripcion("inicial por defecto");
-		
-		Estado votando=new Estado();
-		votando.setCodigo("votando");
+
+		Estado votando = new Estado();
+		votando.setCodigo(CONSTANTE.ESTADO_PROCESO);
 		votando.setDescripcion("votando");
-		
-		Estado votoExitoso=new Estado();
-		votoExitoso.setCodigo("finalizado");
+
+		Estado votoExitoso = new Estado();
+		votoExitoso.setCodigo(CONSTANTE.ESTADO_FINALIZADO);
 		votoExitoso.setDescripcion("voto exitoso");
-		
-		Estado votoIncompleto=new Estado();
-		votoIncompleto.setCodigo("incompleto");
-		votoIncompleto.setDescripcion("no se pudo finalizar con el voto");
-		
-		EntidadDAO<Estado> dao=new EntidadDAOImpl<Estado>();
-		dao.guardar(estadoInicial);
-		dao.guardar(votando);
-		dao.guardar(votoExitoso);
-		dao.guardar(votoIncompleto);
-		
+
+		estadoDAO.guardar(estadoInicial);
+		estadoDAO.guardar(votando);
+		estadoDAO.guardar(votoExitoso);
+
+	}
+
+	public void cerrarVoto(String string) {
+		Votante votante = validador.obtenerVotante(string);
+		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));
+
+		votanteDAO.actualizar(votante);
 	}
 
 }

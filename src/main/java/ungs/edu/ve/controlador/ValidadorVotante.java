@@ -3,6 +3,7 @@ package ungs.edu.ve.controlador;
 import ungs.edu.ve.modelo.Votante;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
 import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
+import ungs.edu.ve.util.CONSTANTE;
 
 public class ValidadorVotante {
 
@@ -20,11 +21,13 @@ public class ValidadorVotante {
 
 	}
 
-	public boolean validarVotoPendiente(Votante votante) {
-		if(!votante.getEstado().getCodigo().equalsIgnoreCase("finalizado")){
+	public boolean estadoValido(Votante votante) {
+		if(votante.getEstado().getCodigo().equalsIgnoreCase(CONSTANTE.ESTADO_INICIAL)){
 			return true;			
+		}else{
+			return false;
 		}
-		return false;
+		
 	}
 
 }
