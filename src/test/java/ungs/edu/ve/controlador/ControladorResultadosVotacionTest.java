@@ -1,7 +1,6 @@
 package ungs.edu.ve.controlador;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import junit.framework.Assert;

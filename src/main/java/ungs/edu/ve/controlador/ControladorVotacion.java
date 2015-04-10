@@ -1,11 +1,7 @@
 package ungs.edu.ve.controlador;
 
-import java.util.Set;
-
 import ungs.edu.ve.modelo.Claustro;
 import ungs.edu.ve.modelo.Estado;
-import ungs.edu.ve.modelo.Lista;
-import ungs.edu.ve.modelo.ResultadoVotacion;
 import ungs.edu.ve.modelo.Votante;
 import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
@@ -49,15 +45,15 @@ public class ControladorVotacion {
 
 	}
 
-//	public long votarListas(Set<Lista> listas) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//
-//	public ResultadoVotacion getResultados() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	// public long votarListas(Set<Lista> listas) {
+	// // TODO Auto-generated method stub
+	// return 0;
+	// }
+	//
+	// public ResultadoVotacion getResultados() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	public void inicializar() {
 

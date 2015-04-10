@@ -1,7 +1,5 @@
 package ungs.edu.ve.controlador;
 
-import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,14 +9,14 @@ public class ControladorVotacionTest {
 	
 	@Before
 	public void preparar() {
-		controladorVotacion=new ControladorVotacion();
+		controladorVotacion = new ControladorVotacion();
 		controladorVotacion.inicializar();
 	}
-	
+
 	@Test
-	public void habilitarVotanteValido() throws Exception{
+	public void habilitarVotanteValido() throws Exception {
 		controladorVotacion.habilitarVotante("2");
-		
+
 	}
 	
 	@Test
