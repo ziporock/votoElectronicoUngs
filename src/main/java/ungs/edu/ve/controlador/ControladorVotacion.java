@@ -55,6 +55,7 @@ public class ControladorVotacion {
 	// return null;
 	// }
 
+	@SuppressWarnings("unchecked")
 	public void inicializar() {
 
 		Claustro claustro = new Claustro();
@@ -90,6 +91,7 @@ public class ControladorVotacion {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	private void cargarEstados() {
 
 		Estado estadoInicial = new Estado();
@@ -110,6 +112,7 @@ public class ControladorVotacion {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void cerrarVoto(String string) {
 		Votante votante = validador.obtenerVotante(string);
 		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));

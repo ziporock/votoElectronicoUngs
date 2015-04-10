@@ -30,6 +30,7 @@ public class ControladorResultadosVotacion {
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	public String getResultados(){
 		String resultado="*************************************\n";
 		resultado+=		 "LISTA\t\t\tPORCENTAJE\n";
@@ -45,6 +46,7 @@ public class ControladorResultadosVotacion {
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	public Lista getGanador(){
 		Iterator iterator= (Iterator) this.resultadoVotacion.getResultados().keySet().iterator();
 		Double porcentajeMayor=0.0;

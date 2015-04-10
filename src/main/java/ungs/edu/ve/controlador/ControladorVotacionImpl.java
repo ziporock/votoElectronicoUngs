@@ -11,8 +11,8 @@ import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
 import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.EstadoDAOImplMock;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImplMock;
+import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
+import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 
 public class ControladorVotacionImpl implements IControladorVotacion {
 	private ValidadorVotante validador;
@@ -68,7 +68,7 @@ public class ControladorVotacionImpl implements IControladorVotacion {
 		
 		cargarEstados();
 		
-		EstadoDAO estadoDAO=new EstadoDAOImplMock();
+		EstadoDAO estadoDAO=new EstadoDAOImpl();
 		
 		
 		
@@ -77,7 +77,7 @@ public class ControladorVotacionImpl implements IControladorVotacion {
 		
 		votante.setClaustro(claustro);
 
-		VotanteDAO ev = new VotanteDAOImplMock();
+		VotanteDAO ev = new VotanteDAOImpl();
 
 		ev.guardar(votante);
 
