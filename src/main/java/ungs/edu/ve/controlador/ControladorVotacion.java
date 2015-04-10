@@ -7,6 +7,8 @@ import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
 import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
+import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
+import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 import ungs.edu.ve.util.CONSTANTE;
 
 public class ControladorVotacion {
@@ -14,7 +16,11 @@ public class ControladorVotacion {
 	private EstadoDAO estadoDAO;
 	private VotanteDAO votanteDAO;
 
-
+	public ControladorVotacion() {
+		validador = new ValidadorVotante();
+		estadoDAO = new EstadoDAOImpl();
+		votanteDAO = new VotanteDAOImpl();
+	}
 
 	public void habilitarVotante(String id) throws Exception {
 
@@ -49,7 +55,6 @@ public class ControladorVotacion {
 	// return null;
 	// }
 
-	@SuppressWarnings("unchecked")
 	public void inicializar() {
 
 		Claustro claustro = new Claustro();
@@ -85,7 +90,6 @@ public class ControladorVotacion {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	private void cargarEstados() {
 
 		Estado estadoInicial = new Estado();
@@ -106,7 +110,6 @@ public class ControladorVotacion {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public void cerrarVoto(String string) {
 		Votante votante = validador.obtenerVotante(string);
 		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));
@@ -114,30 +117,4 @@ public class ControladorVotacion {
 		votanteDAO.actualizar(votante);
 	}
 
-	public ValidadorVotante getValidador() {
-		return validador;
-	}
-
-	public void setValidador(ValidadorVotante validador) {
-		this.validador = validador;
-	}
-
-	public EstadoDAO getEstadoDAO() {
-		return estadoDAO;
-	}
-
-	public void setEstadoDAO(EstadoDAO estadoDAO) {
-		this.estadoDAO = estadoDAO;
-	}
-
-	public VotanteDAO getVotanteDAO() {
-		return votanteDAO;
-	}
-
-	public void setVotanteDAO(VotanteDAO votanteDAO) {
-		this.votanteDAO = votanteDAO;
-	}
-
-	
-	
 }

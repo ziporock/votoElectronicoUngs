@@ -12,7 +12,6 @@ import javax.swing.JTextPane;
 
 import ungs.edu.ve.controlador.ControladorResultadosVotacion;
 
-@SuppressWarnings("serial")
 public class ResultadoVotacionVista extends JFrame {
 
 	private ControladorResultadosVotacion controladorResultadosVotacion;

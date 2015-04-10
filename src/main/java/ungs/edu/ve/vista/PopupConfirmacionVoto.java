@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 
 import ungs.edu.ve.util.CONSTANTE;
 
-@SuppressWarnings("serial")
 public class PopupConfirmacionVoto extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();

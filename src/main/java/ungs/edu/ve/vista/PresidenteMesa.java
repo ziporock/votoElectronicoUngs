@@ -14,9 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import ungs.edu.ve.controlador.ControladorVotacion;
-import ungs.edu.ve.controlador.ValidadorVotante;
-import ungs.edu.ve.modelo.dao.impl.EstadoDAOImpl;
-import ungs.edu.ve.modelo.dao.impl.VotanteDAOImpl;
 
 public class PresidenteMesa extends JFrame {
 
@@ -55,13 +52,7 @@ public class PresidenteMesa extends JFrame {
 	public PresidenteMesa() {
 		
 		controladorVotacion=new ControladorVotacion();
-		VotanteDAOImpl votanteDAOImpl=new VotanteDAOImpl();
-		EstadoDAOImpl estadoDAOImpl=new EstadoDAOImpl();
-		ValidadorVotante validadorVotante=new ValidadorVotante();
-		validadorVotante.setVotanteDAO(votanteDAOImpl);
-		controladorVotacion.setValidador(validadorVotante);
-		controladorVotacion.setEstadoDAO(estadoDAOImpl);
-		controladorVotacion.setVotanteDAO(votanteDAOImpl);
+		
 		controladorVotacion.inicializar();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

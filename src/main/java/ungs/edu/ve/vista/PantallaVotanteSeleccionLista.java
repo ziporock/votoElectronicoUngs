@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
-@SuppressWarnings("serial")
 public class PantallaVotanteSeleccionLista extends JFrame {
 
 	private JPanel contentPane;
