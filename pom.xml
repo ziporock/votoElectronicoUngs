@@ -149,8 +149,8 @@
 					</formats>
 					<instrumentation>
 						<excludes>
-							<exclude>ungs/edu/ve/vista/*.*</exclude>
-							<exclude>ungs/edu/ve/util/*.*</exclude>
+							<exclude>ungs/edu/ve/vista/*.class</exclude>
+							<exclude>ungs/edu/ve/util/*.class</exclude>
 						</excludes>
 					</instrumentation>
 				</configuration>
