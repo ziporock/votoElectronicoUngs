@@ -3,6 +3,7 @@ package ungs.edu.ve.controlador;
 import org.junit.Before;
 import org.junit.Test;
 
+import ungs.edu.ve.modelo.Votante;
 import ungs.edu.ve.modelo.dao.impl.EntidadDAOImplMock;
 import ungs.edu.ve.modelo.dao.impl.EstadoDAOImplMock;
 import ungs.edu.ve.modelo.dao.impl.ValidadorVotanteMock;
@@ -28,13 +29,14 @@ public class ControladorVotacionTest {
 
 	@Test
 	public void habilitarVotanteValido() throws Exception {
-		controladorVotacion.habilitarVotante("1");
+		controladorVotacion.habilitarVotante(votanteDaoMock.getById(Votante.class, 1L));
 
 	}
 	
 	@Test(expected = Exception.class)
 	public void habilitarVotanteYaFinalizado() throws Exception{
-		controladorVotacion.habilitarVotante("2");
+		
+		controladorVotacion.habilitarVotante(votanteDaoMock.getById(Votante.class, 2L));
 		
 	}
 	
@@ -44,11 +46,7 @@ public class ControladorVotacionTest {
 		
 	}
 	
-	@Test(expected = Exception.class)
-	public void habilitarDniInvalido() throws Exception{
-		controladorVotacion.habilitarVotante("rewa1");
-		
-	}
+	
 	
 	@Test
 	public void inicializarTest(){

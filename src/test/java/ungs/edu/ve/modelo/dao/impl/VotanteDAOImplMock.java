@@ -39,6 +39,27 @@ public class VotanteDAOImplMock implements VotanteDAO {
 		votantes.add(votante);
 	}
 	
+	
+	
+
+	@Override
+	public Votante getById(Object clase, Long id) throws HibernateException {
+		loadVotante();
+		return votante;
+	}
+
+	@Override
+	public List getAll(Object clase) throws HibernateException {
+		loadListaVotantes();
+		return votantes;
+	}
+
+	@Override
+	public Votante getByNroDocumento(Integer nroDocumento)throws HibernateException {
+		loadVotante();
+		return votante;
+	}
+
 	@Override
 	public void guardar(Object entidad) throws HibernateException {
 		// TODO Auto-generated method stub
@@ -59,19 +80,8 @@ public class VotanteDAOImplMock implements VotanteDAO {
 
 	@Override
 	public void eliminar(Object entidad) throws HibernateException {
+		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public Object getById(Object clase, Long id) throws HibernateException {
-		loadVotante();
-		return votante;
-	}
-
-	@Override
-	public List getAll(Object clase) throws HibernateException {
-		loadListaVotantes();
-		return votantes;
 	}
 
 	

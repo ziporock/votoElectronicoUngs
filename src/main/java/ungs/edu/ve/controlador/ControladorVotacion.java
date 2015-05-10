@@ -6,37 +6,24 @@ import ungs.edu.ve.modelo.Votante;
 import ungs.edu.ve.modelo.dao.EntidadDAO;
 import ungs.edu.ve.modelo.dao.EstadoDAO;
 import ungs.edu.ve.modelo.dao.VotanteDAO;
-import ungs.edu.ve.modelo.dao.impl.EntidadDAOImpl;
 import ungs.edu.ve.util.CONSTANTE;
 
 public class ControladorVotacion {
 	private ValidadorVotante validador;
 	private EstadoDAO estadoDAO;
 	private VotanteDAO votanteDAO;
-	private EntidadDAO<Claustro> claustroDao ;
+	private EntidadDAO<Claustro> claustroDao;
+
+	public void habilitarVotante(Votante votante) throws Exception {
+
 
 	
-
-	public void habilitarVotante(String id) throws Exception {
-
-		try {
-			Long.parseLong(id);
-		} catch (Exception e) {
-			throw new Exception(CONSTANTE.ERROR_DNI_INGRESADO_INVALIDO);
-		}
-
-		Votante votante = validador.obtenerVotante(id);
-
-		if (votante != null) {
 			if (validador.estadoValido(votante)) {
 
 			} else {
 				throw new Exception(CONSTANTE.ERROR_PERSONA_YA_VOTO);
 			}
-		} else {
-			throw new Exception(CONSTANTE.ERROR_DNI_INEXISTENTE);
-
-		}
+	
 
 	}
 
@@ -57,7 +44,6 @@ public class ControladorVotacion {
 		claustro.setDescripcion("claustro desc");
 		claustro.setNombre("claustro nom");
 
-		
 		claustroDao.guardar(claustro);
 
 		Votante votante = new Votante();
@@ -67,7 +53,7 @@ public class ControladorVotacion {
 
 		cargarEstados();
 
-		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));
+		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 1L));
 
 		votante.setClaustro(claustro);
 
@@ -83,6 +69,17 @@ public class ControladorVotacion {
 		votante1.setEstado((Estado) estadoDAO.getById(Estado.class, 1L));
 
 		votanteDAO.guardar(votante1);
+
+		Votante votante2 = new Votante();
+		votante2.setApellido("pepe");
+		votante2.setNombre("pepe");
+		votante2.setNroDocumento(3);
+
+		votante2.setClaustro(claustro);
+
+		votante2.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));
+
+		votanteDAO.guardar(votante2);
 
 	}
 
@@ -108,8 +105,7 @@ public class ControladorVotacion {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void cerrarVoto(String string) {
-		Votante votante = validador.obtenerVotante(string);
+	public void cerrarVoto(Votante votante) {
 		votante.setEstado((Estado) estadoDAO.getById(Estado.class, 3L));
 
 		votanteDAO.actualizar(votante);
@@ -146,8 +142,10 @@ public class ControladorVotacion {
 	public void setClaustroDao(EntidadDAO<Claustro> claustroDao) {
 		this.claustroDao = claustroDao;
 	}
+	
+	
+	public Votante getVotanteByNroDocumento(Integer nroDocumento){
+		return this.votanteDAO.getByNroDocumento(nroDocumento);
+	}
 
-	
-	
-	
 }
